@@ -21,12 +21,15 @@ class NewProductNotification extends Mailable
 
     public function build()
     {
-        return $this->view('emails.new_product_notification')
-                    ->subject('New Product Notification')
-                    ->attach($this->imagePath, [
-                        'as' => 'product_image.jpg', // Name of the attachment as it will appear to the recipient
-                        'mime' => 'image/jpeg', // Mime type of the attachment
-                    ]);
+        // return $this->view('emails.new_product_notification')
+        //             ->subject('New Product Notification')
+        //             ->attach($this->imagePath, [
+        //                 'as' => 'product_image.jpg', // Name of the attachment as it will appear to the recipient
+        //                 'mime' => 'image/jpeg', // Mime type of the attachment
+        //             ]);
+        return $this->subject('New Product Added')->view('emails.new_product_notification');
+
+        
     }
 }
 ?>

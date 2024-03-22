@@ -60,8 +60,14 @@ class ProductController extends Controller
 
     $product->save();
 
+    $userEmail = Auth::user()->email;
+
+    // Send email to admin
     $adminEmail = 'ragapriya.ait@gmail.com'; // Replace with your admin's email address
     Mail::to($adminEmail)->send(new NewProductNotification($product));
+
+    // Send email to logged-in user
+    Mail::to($userEmail)->send(new NewProductNotification($product));
         return redirect()->route('displaydata')->with('success', 'Product added successfully');
     }
 
